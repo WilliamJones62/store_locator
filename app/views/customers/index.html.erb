@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<table id="normal_dt"  class="stripe" class="mytable" class="display" cellspacing="0" >
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+      <th>Group</th>
+      <th>Show</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |c| %>
+      <tr>
+        <td><%= c.id %></td>
+        <td><%= c.bus_name %></td>
+        <td><%= c.cust_code %></td>
+        <td><%= c.address1 %></td>
+        <td><%= c.city %></td>
+        <td><%= c.state %></td>
+        <td><%= c.zip %></td>
+        <td><%= c.latitude %></td>
+        <td><%= c.longitude %></td>
+        <td><%= c.cust_group %></td>
+        <td><%= link_to 'Show', c %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= @latlong %>

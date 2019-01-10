@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Geocode customers</h2>
+
+<%= form_tag customers_load_path, :method => :get do %>
+  <p>
+    <%= number_field_tag :loadnmbr, params[:loadnmbr] %>
+    <%= submit_tag "Enter", :name => nil %>
+  </p>
+<% end %>

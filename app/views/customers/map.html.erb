@@ -1,0 +1,39 @@
+<% if @market %>
+  <h2>Shops</h2>
+<% else %>
+  <h2>Restaurants</h2>
+<% end %>
+
+
+<%= form_tag customers_map_path, :method => :get do %>
+  <p style="font-size:4vw;">
+    Location: <%= text_field_tag "zip" %>&emsp;
+    Miles: <%= number_field_tag "radius", nil, min: 1,  max: 20 %>&emsp;
+    Type: <%= select_tag "type", options_for_select(["Restaurant", "Market"]) %>&emsp;
+    <%= submit_tag "Enter", :name => nil %>
+  </p>
+<% end %>
+
+<%= image_tag("#{@latlong}", class: "image") %>
+
+<table id="listtab"  class="stripe" class="mytable" class="display" cellspacing="0" >
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Name</th>
+      <th>Distance</th>
+    </tr>
+  </thead>
+
+  <% i = 0 %>
+  <tbody>
+    <% @customers.each do |c| %>
+      <tr>
+        <td><%= @ab[i] %></td>
+        <td><%= link_to c.bus_name, c %></td>
+        <td><%= @distances[i].round(2) %></td>
+      </tr>
+      <% i += 1 %>
+    <% end %>
+  </tbody>
+</table>
